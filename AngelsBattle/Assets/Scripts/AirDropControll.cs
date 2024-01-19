@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AirDropControll : MonoBehaviour
 {
-    public GameObject Plane;
+    public GameObject DragonDropper;
 
     public Transform SpawnA;
     public Transform SpawnB;
@@ -24,30 +24,30 @@ public class AirDropControll : MonoBehaviour
     {
         SpawnTime += Time.deltaTime;
 
-        if(!GameObject.FindWithTag("PlaneAirDrop"))
+        if(!GameObject.FindWithTag("EggAirDrop"))
         {
             if (SpawnTime > 5)
             {
                 RandomizeSpawn = Random.value;
                 if (RandomizeSpawn >= 0 && RandomizeSpawn < 0.16)
                 {
-                    Instantiate(Plane, SpawnA.position, SpawnA.rotation);
+                    Instantiate(DragonDropper, SpawnA.position, SpawnA.rotation);
                 }
                 if (RandomizeSpawn >= 0.16 && RandomizeSpawn < 0.32)
                 {
-                    Instantiate(Plane, SpawnB.position, SpawnB.rotation);
+                    Instantiate(DragonDropper, SpawnB.position, SpawnB.rotation);
                 }
                 if (RandomizeSpawn >= 0.32 && RandomizeSpawn < 0.48)
                 {
-                    Instantiate(Plane, SpawnC.position, SpawnC.rotation);
+                    Instantiate(DragonDropper, SpawnC.position, SpawnC.rotation);
                 }
                 if (RandomizeSpawn >= 0.48 && RandomizeSpawn < 0.64)
                 {
-                    Instantiate(Plane, SpawnD.position, SpawnD.rotation);
+                    Instantiate(DragonDropper, SpawnD.position, SpawnD.rotation);
                 }
                 if (RandomizeSpawn >= 0.64)
                 {
-                    Instantiate(Plane, SpawnE.position, SpawnE.rotation);
+                    Instantiate(DragonDropper, SpawnE.position, SpawnE.rotation);
                 }
             }
         }

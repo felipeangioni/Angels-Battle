@@ -2702,7 +2702,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlaneTime: 0
-  AirDrop: {fileID: 0}
+  AirDrop: {fileID: 378536372065928299, guid: d9a55ad2123c47e479b284e1f4e1ef71, type: 3}
 --- !u!1 &8858010291022113975
 GameObject:
   m_ObjectHideFlags: 0
