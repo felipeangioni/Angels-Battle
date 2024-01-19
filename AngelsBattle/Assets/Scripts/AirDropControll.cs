@@ -24,7 +24,7 @@ public class AirDropControll : MonoBehaviour
     {
         SpawnTime += Time.deltaTime;
 
-        if(!GameObject.FindWithTag("EggAirDrop"))
+        if(!GameObject.FindWithTag("DragonAirDrop"))
         {
             if (SpawnTime > 5)
             {

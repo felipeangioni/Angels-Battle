@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlaneAirDrop : MonoBehaviour
+public class DragonAirDrop : MonoBehaviour
 {
     public float PlaneTime;
     private int airDropCount;
@@ -16,18 +16,18 @@ public class PlaneAirDrop : MonoBehaviour
 
     void Update()
     {
-        transform.Translate(Vector3.forward * (50) * Time.deltaTime);
+        transform.Translate(Vector3.forward * 20 * Time.deltaTime);
 
         PlaneTime += Time.deltaTime;
 
-        if(PlaneTime > 50f && airDropCount == 0)
+        if(PlaneTime > 20f && airDropCount == 0)
         {
             Instantiate(AirDrop, transform.position, transform.rotation);
 
             airDropCount = 1;
         }
 
-        if(PlaneTime > 100f )
+        if(PlaneTime > 60f )
         {
             Destroy(gameObject);
         }
