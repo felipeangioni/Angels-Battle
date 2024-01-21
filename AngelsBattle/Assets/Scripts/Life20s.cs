@@ -15,7 +15,7 @@ public class Life20s : MonoBehaviour
     {
         LifeTime += Time.deltaTime;
 
-        if(LifeTime > 5f)
+        if(LifeTime > 30f)
         {
             Destroy(gameObject);
         }
