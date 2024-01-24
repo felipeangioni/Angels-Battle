@@ -16,6 +16,8 @@ TagManager:
   - Enemy
   - Distractable
   - CoverTrigger
+  - DragonAirDrop
+  - SafeZoneCenter
   layers:
   - Default
   - TransparentFX
