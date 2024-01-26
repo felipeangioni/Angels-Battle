@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public float RelativeCenterDistanceSZ;
+    public float PlayerRelativeCenterDistanceSZ;
     public Vector3 EdgePosSZ;
     public Vector3 CenterPosSZ;
     public float Life;
@@ -15,17 +15,19 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        //Getting positions
         EdgePosSZ = transform.position;
         CenterPosSZ = GameObject.FindWithTag("SafeZoneCenter").transform.position;
 
+        //Locking negatives values
         if (EdgePosSZ.x < 0)
         {
             EdgePosSZ.x = -EdgePosSZ.x;
         }
 
-        if (EdgePosSZ.z < 0)
+        if (EdgePosSZ.y < 0)
         {
-            EdgePosSZ.z = -EdgePosSZ.z;
+            EdgePosSZ.y = -EdgePosSZ.y;
         }
 
         if (CenterPosSZ.x < 0)
@@ -38,9 +40,14 @@ public class Player : MonoBehaviour
             CenterPosSZ.z = -CenterPosSZ.z;
         }
 
-        RelativeCenterDistanceSZ = Vector3.Distance(EdgePosSZ, CenterPosSZ);
+        //Set the Up axes aways in zero; 
+        EdgePosSZ.z = 0;
+        CenterPosSZ.y = 0;
 
-        if(RelativeCenterDistanceSZ > SafeZone.RelativeCenterDistanceSZ)
+        //Getting distance from Edge position to center position
+        PlayerRelativeCenterDistanceSZ = Vector3.Distance(EdgePosSZ, CenterPosSZ);
+
+        if(PlayerRelativeCenterDistanceSZ > SafeZone.RelativeCenterDistanceSZ)
         {
             Life -= 1 * Time.deltaTime;
         }
@@ -48,7 +55,7 @@ public class Player : MonoBehaviour
 
     void OnGUI()
     {
-        GUI.TextField(new Rect(10f, 30f, 130f, 20f), "Distance:" + RelativeCenterDistanceSZ);
-        GUI.TextField(new Rect(200f, 700f, 130f, 20f), "Life:" + RelativeCenterDistanceSZ);
+        GUI.TextField(new Rect(10f, 30f, 130f, 20f), "Player distance:" + PlayerRelativeCenterDistanceSZ);
+        GUI.TextField(new Rect(200f, 700f, 130f, 20f), "Life:" + Life);
     }
 }

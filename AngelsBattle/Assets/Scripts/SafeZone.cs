@@ -15,17 +15,19 @@ public class SafeZone : MonoBehaviour
     
     void Update()
     {
+        //Getting positions
         EdgePosSZ = transform.position;
         CenterPosSZ = GameObject.FindWithTag("SafeZoneCenter").transform.position;
 
-        if(EdgePosSZ.x < 0)
+        //Locking negatives values
+        if (EdgePosSZ.x < 0)
         {
             EdgePosSZ.x = -EdgePosSZ.x;
         }
 
-        if(EdgePosSZ.z < 0)
+        if(EdgePosSZ.y < 0)
         {
-            EdgePosSZ.z = -EdgePosSZ.z;
+            EdgePosSZ.y = -EdgePosSZ.z;
         }
 
         if (CenterPosSZ.x < 0)
@@ -38,11 +40,16 @@ public class SafeZone : MonoBehaviour
             CenterPosSZ.z = -CenterPosSZ.z;
         }
 
+        //Set the Up axes aways in zero; 
+        EdgePosSZ.z = 0;
+        CenterPosSZ.y = 0;
+
+        //Getting distance from Edge position to center position
         RelativeCenterDistanceSZ = Vector3.Distance(EdgePosSZ, CenterPosSZ);
     }
 
     void OnGUI()
     {
-        GUI.TextField(new Rect(10f, 10f, 130f, 20f), "Distance:" + RelativeCenterDistanceSZ);
+        GUI.TextField(new Rect(10f, 10f, 130f, 20f), "Edge distance:" + RelativeCenterDistanceSZ);
     }
 }
