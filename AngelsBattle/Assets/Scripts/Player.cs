@@ -8,9 +8,10 @@ public class Player : MonoBehaviour
     public Vector3 EdgePosSZ;
     public Vector3 CenterPosSZ;
     public float Life;
+    public GameObject BloodScreen;
     void Start()
     {
-        Life = 100f;
+        BloodScreen.SetActive(false);
     }
 
     void Update()
@@ -47,10 +48,17 @@ public class Player : MonoBehaviour
         //Getting distance from Edge position to center position
         PlayerRelativeCenterDistanceSZ = Vector3.Distance(EdgePosSZ, CenterPosSZ);
 
-        if(PlayerRelativeCenterDistanceSZ > SafeZone.RelativeCenterDistanceSZ)
+        if(PlayerRelativeCenterDistanceSZ < SafeZone.RelativeCenterDistanceSZ)
         {
             Life -= 1 * Time.deltaTime;
+
+            BloodScreen.SetActive(true);
         }
+        else
+        {
+            BloodScreen.SetActive(false);
+        }
+        
     } 
 
     void OnGUI()
