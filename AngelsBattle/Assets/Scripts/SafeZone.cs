@@ -36,7 +36,7 @@ public class SafeZone : MonoBehaviour
         }
 
         //Set the Up axes aways in zero; 
-        EdgePosSZ.z = 0;
+        EdgePosSZ.y = 0;
         CenterPosSZ.y = 0;
 
         //Getting distance from Edge position to center position
