@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class SafeZone : MonoBehaviour
 {
-    public static float RelativeCenterDistanceSZ;
+    public static float EdgeRelativeCenterDistanceSZ;
     public Vector3 EdgePosSZ;
     public Vector3 CenterPosSZ;
-    void Start()
-    {
-        
-    }
 
-    
     void Update()
     {
         //Getting positions
@@ -27,7 +22,7 @@ public class SafeZone : MonoBehaviour
 
         if(EdgePosSZ.y < 0)
         {
-            EdgePosSZ.y = -EdgePosSZ.z;
+            EdgePosSZ.y = -EdgePosSZ.y;
         }
 
         if (CenterPosSZ.x < 0)
@@ -45,11 +40,11 @@ public class SafeZone : MonoBehaviour
         CenterPosSZ.y = 0;
 
         //Getting distance from Edge position to center position
-        RelativeCenterDistanceSZ = Vector3.Distance(EdgePosSZ, CenterPosSZ);
+        EdgeRelativeCenterDistanceSZ = Vector3.Distance(EdgePosSZ, CenterPosSZ);
     }
 
     void OnGUI()
     {
-        GUI.TextField(new Rect(10f, 10f, 130f, 20f), "Edge distance:" + RelativeCenterDistanceSZ);
+        GUI.TextField(new Rect(10f, 10f, 130f, 20f), "EdgeToCenter:" + EdgeRelativeCenterDistanceSZ);
     }
 }

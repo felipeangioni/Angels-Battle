@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public float PlayerRelativeCenterDistanceSZ;
-    public Vector3 EdgePosSZ;
+    public Vector3 PlayerPosSZ;
     public Vector3 CenterPosSZ;
     public float Life;
     public GameObject BloodScreen;
@@ -17,18 +17,18 @@ public class Player : MonoBehaviour
     void Update()
     {
         //Getting positions
-        EdgePosSZ = transform.position;
+        PlayerPosSZ = transform.position;
         CenterPosSZ = GameObject.FindWithTag("SafeZoneCenter").transform.position;
 
         //Locking negatives values
-        if (EdgePosSZ.x < 0)
+        if (PlayerPosSZ.x < 0)
         {
-            EdgePosSZ.x = -EdgePosSZ.x;
+            PlayerPosSZ.x = -PlayerPosSZ.x;
         }
 
-        if (EdgePosSZ.y < 0)
+        if (PlayerPosSZ.y < 0)
         {
-            EdgePosSZ.y = -EdgePosSZ.y;
+            PlayerPosSZ.y = -PlayerPosSZ.y;
         }
 
         if (CenterPosSZ.x < 0)
@@ -42,13 +42,13 @@ public class Player : MonoBehaviour
         }
 
         //Set the Up axes aways in zero; 
-        EdgePosSZ.z = 0;
+        PlayerPosSZ.y = 0;
         CenterPosSZ.y = 0;
 
-        //Getting distance from Edge position to center position
-        PlayerRelativeCenterDistanceSZ = Vector3.Distance(EdgePosSZ, CenterPosSZ);
+        //Getting distance from Player position to center position
+        PlayerRelativeCenterDistanceSZ = Vector3.Distance(PlayerPosSZ, CenterPosSZ);
 
-        if(PlayerRelativeCenterDistanceSZ < SafeZone.RelativeCenterDistanceSZ)
+        if(PlayerRelativeCenterDistanceSZ > SafeZone.EdgeRelativeCenterDistanceSZ)
         {
             Life -= 1 * Time.deltaTime;
 
