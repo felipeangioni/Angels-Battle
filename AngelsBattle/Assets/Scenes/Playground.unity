@@ -250,7 +250,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: c8e3621e000112b49aeb36fe7bb34715,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c8e3621e000112b49aeb36fe7bb34715,
         type: 3}
@@ -1161,7 +1161,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &538571944
 MonoBehaviour:
@@ -1782,30 +1782,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1470234571}
-  - component: {fileID: 1470234570}
   m_Layer: 0
   m_Name: Blood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1470234570
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1470234569}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8f479b4788a29e49a20571c90e654f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textura: []
-  valor: 0
-  ValorInt: 0
-  t: 0
+  m_IsActive: 0
 --- !u!4 &1470234571
 Transform:
   m_ObjectHideFlags: 0
@@ -1813,14 +1796,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1470234569}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 241, y: 21.6, z: 79}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 668223388}
-  m_Father: {fileID: 1969851373}
-  m_RootOrder: -1
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1503690512
 PrefabInstance:
@@ -2183,11 +2166,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 3243631560226216739, guid: 3f9896eb08ade7b4ab7b111e294279d4,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1470234571}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f9896eb08ade7b4ab7b111e294279d4, type: 3}
 --- !u!1 &1782439222
@@ -2354,12 +2333,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b544816461f324e56a39767fdeb5b114, type: 3}
---- !u!4 &1969851373 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3243631560226216739, guid: 3f9896eb08ade7b4ab7b111e294279d4,
-    type: 3}
-  m_PrefabInstance: {fileID: 1736631298}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2021031783 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -6874584590210671055, guid: b0fe45db94ebebe409cf9b07a9d96b11,
@@ -2444,7 +2417,7 @@ PrefabInstance:
     - target: {fileID: 6942975036921409287, guid: 681abb500ffedb54faefa871b2cec66e,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6942975036921409287, guid: 681abb500ffedb54faefa871b2cec66e,
         type: 3}

@@ -9,10 +9,7 @@ public class Player : MonoBehaviour
     public Vector3 CenterPosSZ;
     public float Life;
     public GameObject BloodScreen;
-    void Start()
-    {
-        BloodScreen.SetActive(false);
-    }
+
 
     void Update()
     {
