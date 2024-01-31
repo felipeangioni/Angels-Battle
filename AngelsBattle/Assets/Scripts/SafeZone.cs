@@ -8,6 +8,9 @@ public class SafeZone : MonoBehaviour
     public Vector3 EdgePosSZ;
     public Vector3 CenterPosSZ;
 
+    public float ScaleSZ1;
+    public float ScalePivotSZ1;
+
     void Update()
     {
         //Getting positions

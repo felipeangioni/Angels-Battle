@@ -18,6 +18,8 @@ TagManager:
   - CoverTrigger
   - DragonAirDrop
   - SafeZoneCenter
+  - SZ1
+  - PivotSZ1
   layers:
   - Default
   - TransparentFX
