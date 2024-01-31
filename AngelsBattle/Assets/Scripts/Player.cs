@@ -11,7 +11,17 @@ public class Player : MonoBehaviour
     public GameObject BloodScreen;
 
 
+    private void Awake()
+    {
+        PlayerRelativeCenterDistanceSZ = 0f;
+    }
+
     void Update()
+    {
+        
+    }
+
+    private void LateUpdate()
     {
         //Getting positions
         PlayerPosSZ = transform.position;
@@ -45,7 +55,7 @@ public class Player : MonoBehaviour
         //Getting distance from Player position to center position
         PlayerRelativeCenterDistanceSZ = Vector3.Distance(PlayerPosSZ, CenterPosSZ);
 
-        if(PlayerRelativeCenterDistanceSZ > SafeZone.EdgeRelativeCenterDistanceSZ)
+        if (PlayerRelativeCenterDistanceSZ > SafeZone.EdgeRelativeCenterDistanceSZ)
         {
             Life -= 1 * Time.deltaTime;
 
@@ -55,8 +65,7 @@ public class Player : MonoBehaviour
         {
             BloodScreen.SetActive(false);
         }
-        
-    } 
+    }
 
     void OnGUI()
     {
