@@ -55,7 +55,7 @@ public class SafeZone : MonoBehaviour
 
         if (ScaleCSZ > ScaleSZ1)
         {
-            GameObject.FindWithTag("SafeZoneCenter").transform.localScale += new Vector3(-0.2f * (Time.deltaTime) * SZ1Size.x, -0.2f * (Time.deltaTime) * SZ1Size.y, 0);
+            GameObject.FindWithTag("SafeZoneCenter").transform.localScale += new Vector3(-20f * (Time.deltaTime) * SZ1Size.x, -20f * (Time.deltaTime) * SZ1Size.y, 0);
         }
 
     }
