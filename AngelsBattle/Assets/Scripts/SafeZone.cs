@@ -9,7 +9,7 @@ public class SafeZone : MonoBehaviour
     public Vector3 CenterPosSZ;
 
     public float ScaleSZ1;
-    public float ScaleCSZ;
+    public float ScaleCenterSZ;
 
     public Vector3 SZ1Size;
 
@@ -49,13 +49,13 @@ public class SafeZone : MonoBehaviour
 
         //Getting the scaling of objects
         ScaleSZ1 = GameObject.FindWithTag("SZ1").transform.localScale.y;
-        ScaleCSZ = GameObject.FindWithTag("SafeZoneCenter").transform.localScale.y;
+        ScaleCenterSZ = GameObject.FindWithTag("SafeZoneCenter").transform.localScale.y;
 
         SZ1Size = GameObject.FindWithTag("SZ1").transform.localScale;
 
-        if (ScaleCSZ > ScaleSZ1)
+        if (ScaleCenterSZ > ScaleSZ1)
         {
-            GameObject.FindWithTag("SafeZoneCenter").transform.localScale += new Vector3(-0.2f * (Time.deltaTime) * SZ1Size.x, -0.2f * (Time.deltaTime) * SZ1Size.y, 0);
+            GameObject.FindWithTag("SafeZoneCenter").transform.localScale += new Vector3(-0.2f * (Time.deltaTime) * SZ1Size.x, -0.2f * (Time.deltaTime) * SZ1Size.y, 0f);
         }
 
     }
