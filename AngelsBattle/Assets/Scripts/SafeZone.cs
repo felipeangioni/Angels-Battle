@@ -9,7 +9,9 @@ public class SafeZone : MonoBehaviour
     public Vector3 CenterPosSZ;
 
     public float ScaleSZ1;
-    public float ScalePivotSZ1;
+    public float ScaleCSZ;
+
+    public Vector3 SZ1Size;
 
     void Update()
     {
@@ -44,6 +46,18 @@ public class SafeZone : MonoBehaviour
 
         //Getting distance from Edge position to center position
         EdgeRelativeCenterDistanceSZ = Vector3.Distance(EdgePosSZ, CenterPosSZ);
+
+        //Getting the scaling of objects
+        ScaleSZ1 = GameObject.FindWithTag("SZ1").transform.localScale.y;
+        ScaleCSZ = GameObject.FindWithTag("SafeZoneCenter").transform.localScale.y;
+
+        SZ1Size = GameObject.FindWithTag("SZ1").transform.localScale;
+
+        if (ScaleCSZ > ScaleSZ1)
+        {
+            GameObject.FindWithTag("SafeZoneCenter").transform.localScale += new Vector3(-0.2f * (Time.deltaTime) * SZ1Size.x, -0.2f * (Time.deltaTime) * SZ1Size.y, 0);
+        }
+
     }
 
     void OnGUI()
