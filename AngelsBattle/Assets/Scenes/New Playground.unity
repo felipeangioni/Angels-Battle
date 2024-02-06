@@ -198,6 +198,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Demarcador_Sz1
       objectReference: {fileID: 0}
+    - target: {fileID: 6631182973240167807, guid: 0239262c5f91fdc40a751a14deb809aa,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2159,6 +2164,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Safe Zone Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 5973645630379739790, guid: 60be0b90c26a1b4478650e051c3525e4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4707,7 +4717,7 @@ PrefabInstance:
     - target: {fileID: 2458672249233908209, guid: 6b196497605dd094ea8e65839c577f0f,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3504106496794844052, guid: 6b196497605dd094ea8e65839c577f0f,
         type: 3}
@@ -14243,17 +14253,17 @@ PrefabInstance:
     - target: {fileID: 4027446090950943866, guid: 5d1a776477408be4294d1082585c2df4,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 84.9
+      value: 3.1
       objectReference: {fileID: 0}
     - target: {fileID: 4027446090950943866, guid: 5d1a776477408be4294d1082585c2df4,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.8
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4027446090950943866, guid: 5d1a776477408be4294d1082585c2df4,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 143.1
+      value: 17.4
       objectReference: {fileID: 0}
     - target: {fileID: 4027446090950943866, guid: 5d1a776477408be4294d1082585c2df4,
         type: 3}
@@ -15305,7 +15315,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5189002509372295588
 Transform:
   m_ObjectHideFlags: 0
