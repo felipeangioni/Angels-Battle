@@ -13,6 +13,15 @@ public class SafeZone : MonoBehaviour
 
     public Vector3 SZ1Size;
 
+    public Vector3 PositionPivotSZ1;
+    public Vector3 PositionCentralSZ1;
+
+    public Transform TransformPositionPivotSZ1;
+    public Transform TransformPositionCentralSZ1;
+
+    public float DistancePivotSZ1;
+
+
     void Update()
     {
         //Getting positions
@@ -57,6 +66,10 @@ public class SafeZone : MonoBehaviour
         {
             GameObject.FindWithTag("SafeZoneCenter").transform.localScale += new Vector3(-0.2f * (Time.deltaTime) * SZ1Size.x, -0.2f * (Time.deltaTime) * SZ1Size.y, 0f);
         }
+
+        //Getting the distance of the pivot to center of safe zone
+
+        DistancePivotSZ1 = Vector3.Distance(PositionPivotSZ1, PositionCentralSZ1);
 
     }
 
