@@ -69,7 +69,21 @@ public class SafeZone : MonoBehaviour
 
         //Getting the distance of the pivot to center of safe zone
 
-        DistancePivotSZ1 = Vector3.Distance(PositionPivotSZ1, PositionCentralSZ1);
+        TransformPositionCentralSZ1 = GameObject.FindWithTag("SafeZoneCenter").transform;
+        TransformPositionPivotSZ1 = GameObject.FindWithTag("PivotSZ1").transform;
+
+        DistancePivotSZ1 = Vector3.Distance(TransformPositionCentralSZ1.position, TransformPositionPivotSZ1.position);
+
+        //Getting the position of the Vector3
+
+        PositionCentralSZ1 = GameObject.FindWithTag("SafeZoneCenter").transform.position;
+        PositionPivotSZ1 = GameObject.FindWithTag("PivotSZ1").transform.position;
+        
+
+        if(DistancePivotSZ1 > 0)
+        {
+            GameObject.FindWithTag("SafeZoneCenter").transform.position = Vector3.Lerp(PositionCentralSZ1, PositionPivotSZ1, 1.0f * Time.deltaTime);
+        }
 
     }
 
