@@ -17,7 +17,7 @@ public class SafeZone : MonoBehaviour
     public Vector3 PositionCentralSZ1;
 
     public float DistancePivotSZ1;
-
+     
 
     void Update()
     {
@@ -53,33 +53,40 @@ public class SafeZone : MonoBehaviour
         //Getting distance from Edge position to center position
         EdgeRelativeCenterDistanceSZ = Vector3.Distance(EdgePosSZ, CenterPosSZ);
 
-        //* ------------------------------------------------------------------------------- *//
+        //*-------------------------------------------------------------------------------*//
+        //*-------------------------------------------------------------------------------*//
+        //SAFE ZONE SYSTEM
 
-        //Getting the scaling of objects
-        ScaleSZ1 = GameObject.FindWithTag("SZ1").transform.localScale.y;
-        ScaleCenterSZ = GameObject.FindWithTag("SafeZoneCenter").transform.localScale.y;
+        if (GameObject.FindWithTag("PivotSZ1"))
 
-        SZ1Size = GameObject.FindWithTag("SZ1").transform.localScale;
-
-        if (ScaleCenterSZ > ScaleSZ1)
         {
-            GameObject.FindWithTag("SafeZoneCenter").transform.localScale += new Vector3(-0.2f * (Time.deltaTime) * SZ1Size.x, -0.2f * (Time.deltaTime) * SZ1Size.y, 0f);
-        }
+                //Getting the scaling of objects
+                ScaleSZ1 = GameObject.FindWithTag("PivotSZ1").transform.localScale.y;
+                ScaleCenterSZ = GameObject.FindWithTag("SafeZoneCenter").transform.localScale.y;
 
-        //* ------------------------------------------------------------------------------- *//
+                SZ1Size = GameObject.FindWithTag("PivotSZ1").transform.localScale;
 
-        //Getting the position of the Pivot and Safe zone
+                if (ScaleCenterSZ > ScaleSZ1)
+                {
+                    GameObject.FindWithTag("SafeZoneCenter").transform.localScale += new Vector3(-0.2f * (Time.deltaTime) * SZ1Size.x, -0.2f * (Time.deltaTime) * SZ1Size.y, 0f);
+                }
 
-        PositionCentralSZ1 = GameObject.FindWithTag("SafeZoneCenter").transform.position;
-        PositionPivotSZ1 = GameObject.FindWithTag("PivotSZ1").transform.position;
+                //* ------------------------------------------------------------------------------- *//
 
-        //Getting the distance from pivot to center of safe zone
-        DistancePivotSZ1 = Vector3.Distance(PositionCentralSZ1, PositionPivotSZ1);
-   
+                //Getting the position of the Pivot and Safe zone
 
-        if(DistancePivotSZ1 > 0)
-        {
-            GameObject.FindWithTag("SafeZoneCenter").transform.position = Vector3.Lerp(PositionCentralSZ1, PositionPivotSZ1, 1.0f * Time.deltaTime);
+                PositionCentralSZ1 = GameObject.FindWithTag("SafeZoneCenter").transform.position;
+                PositionPivotSZ1 = GameObject.FindWithTag("PivotSZ1").transform.position;
+
+                //Getting the distance from pivot to center of safe zone
+                DistancePivotSZ1 = Vector3.Distance(PositionCentralSZ1, PositionPivotSZ1);
+
+
+                if (DistancePivotSZ1 > 0)
+                {
+                    GameObject.FindWithTag("SafeZoneCenter").transform.position = Vector3.Lerp(PositionCentralSZ1, PositionPivotSZ1, 1.0f * Time.deltaTime);
+                }
+
         }
 
     }
