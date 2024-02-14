@@ -17,7 +17,17 @@ public class SafeZone : MonoBehaviour
     public Vector3 PositionCentralSZ1;
 
     public float DistancePivotSZ1;
-     
+
+    public float TimeSZ;
+    public int ControllSZ;
+
+    public GameObject SZ1;
+
+    void Start()
+    {
+        TimeSZ = 4;
+        ControllSZ = 0;
+    }
 
     void Update()
     {
@@ -71,7 +81,8 @@ public class SafeZone : MonoBehaviour
                     GameObject.FindWithTag("SafeZoneCenter").transform.localScale += new Vector3(-0.2f * (Time.deltaTime) * SZ1Size.x, -0.2f * (Time.deltaTime) * SZ1Size.y, 0f);
                 }
 
-                //* ------------------------------------------------------------------------------- *//
+                //*-------------------------------------------------------------------------------*//
+                //*-------------------------------------------------------------------------------*//
 
                 //Getting the position of the Pivot and Safe zone
 
@@ -89,10 +100,24 @@ public class SafeZone : MonoBehaviour
 
         }
 
+        //Safe zone chain
+
+        TimeSZ -= 0.03f * Time.deltaTime;
+
+        if (TimeSZ < 3)
+        {
+            if(!GameObject.FindWithTag("PivotSZ1") && ControllSZ == 0)
+            {
+                Instantiate(SZ1, GameObject.FindWithTag("SafeZoneCenter").transform.position, GameObject.FindWithTag("SafeZoneCenter").transform.rotation);
+                ControllSZ = 1;
+            }
+        }
+
     }
 
     void OnGUI()
     {
         GUI.TextField(new Rect(10f, 10f, 130f, 20f), "EdgeToCenter:" + EdgeRelativeCenterDistanceSZ);
+        GUI.TextField(new Rect(500f, 10f, 130f, 20f), "TimeSZ:" + TimeSZ);
     }
 }
