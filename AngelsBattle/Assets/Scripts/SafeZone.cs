@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SafeZone : MonoBehaviour
 {
-    public static float EdgeRelativeCenterDistanceSZ;
+    public static float RaySZ;
     public Vector3 EdgePosSZ;
     public Vector3 CenterPosSZ;
 
@@ -61,7 +61,7 @@ public class SafeZone : MonoBehaviour
         CenterPosSZ.y = 0;
 
         //Getting distance from Edge position to center position
-        EdgeRelativeCenterDistanceSZ = Vector3.Distance(EdgePosSZ, CenterPosSZ);
+        RaySZ = Vector3.Distance(EdgePosSZ, CenterPosSZ);
 
         //*-------------------------------------------------------------------------------*//
         //*-------------------------------------------------------------------------------*//
@@ -108,7 +108,7 @@ public class SafeZone : MonoBehaviour
         {
             if(!GameObject.FindWithTag("PivotSZ1") && ControllSZ == 0)
             {
-                Instantiate(SZ1, GameObject.FindWithTag("SafeZoneCenter").transform.position, GameObject.FindWithTag("SafeZoneCenter").transform.rotation);
+                Instantiate(SZ1, new Vector3(GameObject.FindWithTag("SafeZoneCenter").transform.position.x, GameObject.FindWithTag("SafeZoneCenter").transform.position.y, GameObject.FindWithTag("SafeZoneCenter").transform.position.z), GameObject.FindWithTag("SafeZoneCenter").transform.rotation);
                 ControllSZ = 1;
             }
         }
@@ -117,7 +117,7 @@ public class SafeZone : MonoBehaviour
 
     void OnGUI()
     {
-        GUI.TextField(new Rect(10f, 10f, 130f, 20f), "EdgeToCenter:" + EdgeRelativeCenterDistanceSZ);
+        GUI.TextField(new Rect(10f, 10f, 130f, 20f), "EdgeToCenter:" + RaySZ);
         GUI.TextField(new Rect(500f, 10f, 130f, 20f), "TimeSZ:" + TimeSZ);
     }
 }

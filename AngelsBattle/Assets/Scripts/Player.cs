@@ -55,7 +55,7 @@ public class Player : MonoBehaviour
         //Getting distance from Player position to center position
         PlayerRelativeCenterDistanceSZ = Vector3.Distance(PlayerPosSZ, CenterPosSZ);
 
-        if (PlayerRelativeCenterDistanceSZ > SafeZone.EdgeRelativeCenterDistanceSZ)
+        if (PlayerRelativeCenterDistanceSZ > SafeZone.RaySZ)
         {
             Life -= 1 * Time.deltaTime;
 
