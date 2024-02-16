@@ -108,7 +108,7 @@ public class SafeZone : MonoBehaviour
         {
             if(!GameObject.FindWithTag("PivotSZ1") && ControllSZ == 0)
             {
-                Instantiate(SZ1, new Vector3(GameObject.FindWithTag("SafeZoneCenter").transform.position.x, GameObject.FindWithTag("SafeZoneCenter").transform.position.y, GameObject.FindWithTag("SafeZoneCenter").transform.position.z), GameObject.FindWithTag("SafeZoneCenter").transform.rotation);
+                Instantiate(SZ1, new Vector3(GameObject.FindWithTag("SafeZoneCenter").transform.position.x+(RaySZ/2) - (SZ1.transform.localScale.x/2), GameObject.FindWithTag("SafeZoneCenter").transform.position.y, GameObject.FindWithTag("SafeZoneCenter").transform.position.z), GameObject.FindWithTag("SafeZoneCenter").transform.rotation);
                 ControllSZ = 1;
             }
         }
