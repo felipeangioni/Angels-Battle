@@ -23,6 +23,8 @@ public class SafeZone : MonoBehaviour
 
     public GameObject SZ1;
 
+    public float RandomSpawn;
+
     void Start()
     {
         TimeSZ = 4;
@@ -108,8 +110,47 @@ public class SafeZone : MonoBehaviour
         {
             if(!GameObject.FindWithTag("PivotSZ1") && ControllSZ == 0)
             {
-                Instantiate(SZ1, new Vector3(GameObject.FindWithTag("SafeZoneCenter").transform.position.x+(RaySZ/2) - (SZ1.transform.localScale.x/2), GameObject.FindWithTag("SafeZoneCenter").transform.position.y, GameObject.FindWithTag("SafeZoneCenter").transform.position.z), GameObject.FindWithTag("SafeZoneCenter").transform.rotation);
-                ControllSZ = 1;
+                //Spawn possibilities
+                RandomSpawn = Random.value;
+
+                //1
+                if(RandomSpawn >= 0 && RandomSpawn<= 2)
+                {
+                    Instantiate(SZ1, new Vector3(GameObject.FindWithTag("SafeZoneCenter").transform.position.x + (RaySZ / 2) - (SZ1.transform.localScale.x / 2), GameObject.FindWithTag("SafeZoneCenter").transform.position.y, GameObject.FindWithTag("SafeZoneCenter").transform.position.z), GameObject.FindWithTag("SafeZoneCenter").transform.rotation);
+                    ControllSZ = 1;
+                }
+
+                //2
+                if (RandomSpawn >= 0 && RandomSpawn <= 2)
+                {
+                    Instantiate(SZ1, new Vector3(GameObject.FindWithTag("SafeZoneCenter").transform.position.x, GameObject.FindWithTag("SafeZoneCenter").transform.position.y, GameObject.FindWithTag("SafeZoneCenter").transform.position.z), GameObject.FindWithTag("SafeZoneCenter").transform.rotation);
+                    ControllSZ = 1;
+                }
+
+                //3
+                if (RandomSpawn >= 0 && RandomSpawn <= 2)
+                {
+                    Instantiate(SZ1, new Vector3(GameObject.FindWithTag("SafeZoneCenter").transform.position.x - (RaySZ/2)+(SZ1.transform.localScale.x/2), GameObject.FindWithTag("SafeZoneCenter").transform.position.y, GameObject.FindWithTag("SafeZoneCenter").transform.position.z), GameObject.FindWithTag("SafeZoneCenter").transform.rotation);
+                    ControllSZ = 1;
+                }
+
+                //4
+                if (RandomSpawn >= 0 && RandomSpawn <= 2)
+                {
+                    Instantiate(SZ1, new Vector3(GameObject.FindWithTag("SafeZoneCenter").transform.position.x, GameObject.FindWithTag("SafeZoneCenter").transform.position.y, GameObject.FindWithTag("SafeZoneCenter").transform.position.z), GameObject.FindWithTag("SafeZoneCenter").transform.rotation);
+                    ControllSZ = 1;
+                }
+
+                //5
+                if (RandomSpawn >= 0 && RandomSpawn <= 2)
+                {
+                    Instantiate(SZ1, new Vector3(GameObject.FindWithTag("SafeZoneCenter").transform.position.x, GameObject.FindWithTag("SafeZoneCenter").transform.position.y, GameObject.FindWithTag("SafeZoneCenter").transform.position.z), GameObject.FindWithTag("SafeZoneCenter").transform.rotation);
+                    ControllSZ = 1;
+                }
+
+
+
+
             }
         }
 
