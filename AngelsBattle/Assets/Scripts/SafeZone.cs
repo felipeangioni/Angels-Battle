@@ -104,7 +104,7 @@ public class SafeZone : MonoBehaviour
 
         //Safe zone chain
 
-        TimeSZ -= 0.03f * Time.deltaTime;
+        TimeSZ -= 1.0f * Time.deltaTime;
 
         if (TimeSZ < 3)
         {
@@ -114,37 +114,37 @@ public class SafeZone : MonoBehaviour
                 RandomSpawn = Random.value;
 
                 //1
-                if(RandomSpawn >= 0 && RandomSpawn<= 2)
+                if(RandomSpawn >= 0 && RandomSpawn < 0.2)
                 {
                     Instantiate(SZ1, new Vector3(GameObject.FindWithTag("SafeZoneCenter").transform.position.x + (RaySZ / 2) - (SZ1.transform.localScale.x / 2), GameObject.FindWithTag("SafeZoneCenter").transform.position.y, GameObject.FindWithTag("SafeZoneCenter").transform.position.z), GameObject.FindWithTag("SafeZoneCenter").transform.rotation);
                     ControllSZ = 1;
                 }
 
                 //2
-                if (RandomSpawn >= 0 && RandomSpawn <= 2)
+                if (RandomSpawn >= 0.2 && RandomSpawn < 0.4)
                 {
                     Instantiate(SZ1, new Vector3(GameObject.FindWithTag("SafeZoneCenter").transform.position.x, GameObject.FindWithTag("SafeZoneCenter").transform.position.y, GameObject.FindWithTag("SafeZoneCenter").transform.position.z), GameObject.FindWithTag("SafeZoneCenter").transform.rotation);
                     ControllSZ = 1;
                 }
 
                 //3
-                if (RandomSpawn >= 0 && RandomSpawn <= 2)
+                if (RandomSpawn >= 0.4 && RandomSpawn < 0.6)
                 {
                     Instantiate(SZ1, new Vector3(GameObject.FindWithTag("SafeZoneCenter").transform.position.x - (RaySZ/2)+(SZ1.transform.localScale.x/2), GameObject.FindWithTag("SafeZoneCenter").transform.position.y, GameObject.FindWithTag("SafeZoneCenter").transform.position.z), GameObject.FindWithTag("SafeZoneCenter").transform.rotation);
                     ControllSZ = 1;
                 }
 
                 //4
-                if (RandomSpawn >= 0 && RandomSpawn <= 2)
+                if (RandomSpawn >= 0.6 && RandomSpawn <= 0.8)
                 {
-                    Instantiate(SZ1, new Vector3(GameObject.FindWithTag("SafeZoneCenter").transform.position.x, GameObject.FindWithTag("SafeZoneCenter").transform.position.y, GameObject.FindWithTag("SafeZoneCenter").transform.position.z), GameObject.FindWithTag("SafeZoneCenter").transform.rotation);
+                    Instantiate(SZ1, new Vector3(GameObject.FindWithTag("SafeZoneCenter").transform.position.x, GameObject.FindWithTag("SafeZoneCenter").transform.position.y, GameObject.FindWithTag("SafeZoneCenter").transform.position.z - RaySZ / 2 + (SZ1.transform.localScale.z / 2)), GameObject.FindWithTag("SafeZoneCenter").transform.rotation);
                     ControllSZ = 1;
                 }
 
                 //5
-                if (RandomSpawn >= 0 && RandomSpawn <= 2)
+                if (RandomSpawn > 0.8)
                 {
-                    Instantiate(SZ1, new Vector3(GameObject.FindWithTag("SafeZoneCenter").transform.position.x, GameObject.FindWithTag("SafeZoneCenter").transform.position.y, GameObject.FindWithTag("SafeZoneCenter").transform.position.z), GameObject.FindWithTag("SafeZoneCenter").transform.rotation);
+                    Instantiate(SZ1, new Vector3(GameObject.FindWithTag("SafeZoneCenter").transform.position.x, GameObject.FindWithTag("SafeZoneCenter").transform.position.y, GameObject.FindWithTag("SafeZoneCenter").transform.position.z + RaySZ / 2 - (SZ1.transform.localScale.z / 2)), GameObject.FindWithTag("SafeZoneCenter").transform.rotation);
                     ControllSZ = 1;
                 }
 
