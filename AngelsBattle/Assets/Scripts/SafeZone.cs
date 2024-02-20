@@ -36,7 +36,6 @@ public class SafeZone : MonoBehaviour
         SafeZoneSystem();
 
         //**//**//**//**//**////**//**//**//**//**////**//**//**//**//**////**//**//**//**//**//
-        //**//**//**//**//**////**//**//**//**//**////**//**//**//**//**////**//**//**//**//**//
 
         //Getting Edge and Center positions
         EdgePosSZ = transform.position;
@@ -71,9 +70,6 @@ public class SafeZone : MonoBehaviour
         RaySZ = Vector3.Distance(EdgePosSZ, CenterPosSZ);
 
         //**//**//**//**//**////**//**//**//**//**////**//**//**//**//**////**//**//**//**//**//
-        //**//**//**//**//**////**//**//**//**//**////**//**//**//**//**////**//**//**//**//**//
-
-
 
     }
 
@@ -86,6 +82,8 @@ public class SafeZone : MonoBehaviour
     public void SafeZoneSystem()
     {
         //SAFE ZONE SYSTEM
+
+        //Beginning of Safe Zone 1
 
         if (GameObject.FindWithTag("PivotSZ1"))
 
@@ -101,8 +99,7 @@ public class SafeZone : MonoBehaviour
                 GameObject.FindWithTag("SafeZoneCenter").transform.localScale += new Vector3(-0.2f * (Time.deltaTime) * SZ1Size.x, -0.2f * (Time.deltaTime) * SZ1Size.y, 0f);
             }
 
-            //*-------------------------------------------------------------------------------*//
-            //*-------------------------------------------------------------------------------*//
+            //**//**//**//**//**////**//**//**//**//**////**//**//**//**//**////**//**//**//**//**//
 
             //Getting the position of the Pivot and Safe zone
 
@@ -168,5 +165,96 @@ public class SafeZone : MonoBehaviour
 
             }
         }
+
+        //End of Safe Zone 1
+
+        //**//**//**//**//**////**//**//**//**//**////**//**//**//**//**////**//**//**//**//**//
+
+        //Beginning of Safe Zone 2
+
+        PositionPivotSZ2.Equals(GameObject.FindWithTag("PivotSZ2").transform.localScale.y);
+
+        if (GameObject.FindWithTag("PivotSZ2"))
+
+        {
+            //Getting the scaling of objects
+            ScaleSZ2 = GameObject.FindWithTag("PivotSZ2").transform.localScale.y;
+            ScaleCenterSZ = GameObject.FindWithTag("SafeZoneCenter").transform.localScale.y;
+
+            SZ1Size = GameObject.FindWithTag("PivotSZ2").transform.localScale;
+
+            if (ScaleCenterSZ > ScaleSZ2)
+            {
+                GameObject.FindWithTag("SafeZoneCenter").transform.localScale += new Vector3(-0.2f * (Time.deltaTime) * SZ1Size.x, -0.2f * (Time.deltaTime) * SZ1Size.y, 0f);
+            }
+
+            //**//**//**//**//**////**//**//**//**//**////**//**//**//**//**////**//**//**//**//**//
+
+            //Getting the position of the Pivot and Safe zone
+
+            PositionCentralSZ1 = GameObject.FindWithTag("SafeZoneCenter").transform.position;
+            PositionPivotSZ2 = GameObject.FindWithTag("PivotSZ2").transform.position;
+
+            //Getting the distance from pivot to center of safe zone
+            DistancePivotSZ1 = Vector3.Distance(PositionCentralSZ1, PositionPivotSZ2);
+
+
+            if (DistancePivotSZ1 > 0)
+            {
+                GameObject.FindWithTag("SafeZoneCenter").transform.position = Vector3.Lerp(PositionCentralSZ1, PositionPivotSZ2, 1.0f * Time.deltaTime);
+            }
+
+        }
+
+        //Safe zone chain
+
+        TimeSZ -= 1.0f * Time.deltaTime;
+
+        if (TimeSZ < 3)
+        {
+            if (!GameObject.FindWithTag("PivotSZ2") && ControllSZ == 0)
+            {
+                //Spawn possibilities
+                RandomSpawn = Random.value;
+
+                //1
+                if (RandomSpawn >= 0 && RandomSpawn < 0.2)
+                {
+                    Instantiate(SZ1, new Vector3(GameObject.FindWithTag("SafeZoneCenter").transform.position.x + (RaySZ / 2) - (SZ1.transform.localScale.x / 2), GameObject.FindWithTag("SafeZoneCenter").transform.position.y, GameObject.FindWithTag("SafeZoneCenter").transform.position.z), GameObject.FindWithTag("SafeZoneCenter").transform.rotation);
+                    ControllSZ = 1;
+                }
+
+                //2
+                if (RandomSpawn >= 0.2 && RandomSpawn < 0.4)
+                {
+                    Instantiate(SZ1, new Vector3(GameObject.FindWithTag("SafeZoneCenter").transform.position.x, GameObject.FindWithTag("SafeZoneCenter").transform.position.y, GameObject.FindWithTag("SafeZoneCenter").transform.position.z), GameObject.FindWithTag("SafeZoneCenter").transform.rotation);
+                    ControllSZ = 1;
+                }
+
+                //3
+                if (RandomSpawn >= 0.4 && RandomSpawn < 0.6)
+                {
+                    Instantiate(SZ1, new Vector3(GameObject.FindWithTag("SafeZoneCenter").transform.position.x - (RaySZ / 2) + (SZ1.transform.localScale.x / 2), GameObject.FindWithTag("SafeZoneCenter").transform.position.y, GameObject.FindWithTag("SafeZoneCenter").transform.position.z), GameObject.FindWithTag("SafeZoneCenter").transform.rotation);
+                    ControllSZ = 1;
+                }
+
+                //4
+                if (RandomSpawn >= 0.6 && RandomSpawn <= 0.8)
+                {
+                    Instantiate(SZ1, new Vector3(GameObject.FindWithTag("SafeZoneCenter").transform.position.x, GameObject.FindWithTag("SafeZoneCenter").transform.position.y, GameObject.FindWithTag("SafeZoneCenter").transform.position.z - RaySZ / 2 + (SZ1.transform.localScale.z / 2)), GameObject.FindWithTag("SafeZoneCenter").transform.rotation);
+                    ControllSZ = 1;
+                }
+
+                //5
+                if (RandomSpawn > 0.8)
+                {
+                    Instantiate(SZ1, new Vector3(GameObject.FindWithTag("SafeZoneCenter").transform.position.x, GameObject.FindWithTag("SafeZoneCenter").transform.position.y, GameObject.FindWithTag("SafeZoneCenter").transform.position.z + RaySZ / 2 - (SZ1.transform.localScale.z / 2)), GameObject.FindWithTag("SafeZoneCenter").transform.rotation);
+                    ControllSZ = 1;
+                }
+
+            }
+        }
+
+        //End of Safe Zone 2
     }
 }
