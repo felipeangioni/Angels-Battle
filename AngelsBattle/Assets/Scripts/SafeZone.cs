@@ -31,10 +31,13 @@ public class SafeZone : MonoBehaviour
 
     public float RandomSpawn;
 
+    public Renderer RenderASZ;
+
     void Start()
     {
         TimeSZ = 4;
         ControllSZ = 0;
+        RenderASZ.enabled = false;
     }
 
     void Update()
@@ -76,6 +79,11 @@ public class SafeZone : MonoBehaviour
         RaySZ = Vector3.Distance(EdgePosSZ, CenterPosSZ);
 
         //**//**//**//**//**////**//**//**//**//**////**//**//**//**//**////**//**//**//**//**//
+
+        if (!GameObject.FindWithTag("PivotSZ1") && TimeSZ < 0)
+        {
+            TimeSZ = 4;
+        }
 
     }
 
@@ -125,12 +133,14 @@ public class SafeZone : MonoBehaviour
 
         //Safe zone chain
 
-        TimeSZ -= 1.0f * Time.deltaTime;
+        TimeSZ -= 0.5f * Time.deltaTime;
 
         if (TimeSZ < 3)
         {
             if (!GameObject.FindWithTag("PivotSZ1") && ControllSZ == 0)
             {
+                RenderASZ.enabled = true;
+
                 //Spawn possibilities
                 RandomSpawn = Random.value;
 
@@ -213,11 +223,9 @@ public class SafeZone : MonoBehaviour
 
         //Safe zone chain
 
-        TimeSZ -= 1.0f * Time.deltaTime;
-
-        if (TimeSZ < 3)
+        if (!GameObject.FindWithTag("PivotSZ1") &&  TimeSZ < 2.5)
         {
-            if (!GameObject.FindWithTag("PivotSZ2") && ControllSZ == 0)
+            if (!GameObject.FindWithTag("PivotSZ2") && ControllSZ == 1)
             {
                 //Spawn possibilities
                 RandomSpawn = Random.value;
@@ -226,35 +234,35 @@ public class SafeZone : MonoBehaviour
                 if (RandomSpawn >= 0 && RandomSpawn < 0.2)
                 {
                     Instantiate(SZ2, new Vector3(GameObject.FindWithTag("SafeZoneCenter").transform.position.x + (RaySZ / 2) - (SZ2.transform.localScale.x / 2), GameObject.FindWithTag("SafeZoneCenter").transform.position.y, GameObject.FindWithTag("SafeZoneCenter").transform.position.z), GameObject.FindWithTag("SafeZoneCenter").transform.rotation);
-                    ControllSZ = 1;
+                    ControllSZ = 2;
                 }
 
                 //2
                 if (RandomSpawn >= 0.2 && RandomSpawn < 0.4)
                 {
                     Instantiate(SZ2, new Vector3(GameObject.FindWithTag("SafeZoneCenter").transform.position.x, GameObject.FindWithTag("SafeZoneCenter").transform.position.y, GameObject.FindWithTag("SafeZoneCenter").transform.position.z), GameObject.FindWithTag("SafeZoneCenter").transform.rotation);
-                    ControllSZ = 1;
+                    ControllSZ = 2;
                 }
 
                 //3
                 if (RandomSpawn >= 0.4 && RandomSpawn < 0.6)
                 {
                     Instantiate(SZ2, new Vector3(GameObject.FindWithTag("SafeZoneCenter").transform.position.x - (RaySZ / 2) + (SZ2.transform.localScale.x / 2), GameObject.FindWithTag("SafeZoneCenter").transform.position.y, GameObject.FindWithTag("SafeZoneCenter").transform.position.z), GameObject.FindWithTag("SafeZoneCenter").transform.rotation);
-                    ControllSZ = 1;
+                    ControllSZ = 2;
                 }
 
                 //4
                 if (RandomSpawn >= 0.6 && RandomSpawn <= 0.8)
                 {
                     Instantiate(SZ2, new Vector3(GameObject.FindWithTag("SafeZoneCenter").transform.position.x, GameObject.FindWithTag("SafeZoneCenter").transform.position.y, GameObject.FindWithTag("SafeZoneCenter").transform.position.z - RaySZ / 2 + (SZ2.transform.localScale.z / 2)), GameObject.FindWithTag("SafeZoneCenter").transform.rotation);
-                    ControllSZ = 1;
+                    ControllSZ = 2;
                 }
 
                 //5
                 if (RandomSpawn > 0.8)
                 {
                     Instantiate(SZ2, new Vector3(GameObject.FindWithTag("SafeZoneCenter").transform.position.x, GameObject.FindWithTag("SafeZoneCenter").transform.position.y, GameObject.FindWithTag("SafeZoneCenter").transform.position.z + RaySZ / 2 - (SZ2.transform.localScale.z / 2)), GameObject.FindWithTag("SafeZoneCenter").transform.rotation);
-                    ControllSZ = 1;
+                    ControllSZ = 2;
                 }
 
             }
