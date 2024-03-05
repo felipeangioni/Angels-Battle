@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SafeZone : MonoBehaviour
 {
@@ -33,6 +34,8 @@ public class SafeZone : MonoBehaviour
 
     public Renderer RenderASZ;
 
+    public Text TexTime;
+
     void Start()
     {
         TimeSZ = 4;
@@ -44,7 +47,7 @@ public class SafeZone : MonoBehaviour
     {
         SafeZoneSystem();
 
-        //**//**//**//**//**////**//**//**//**//**////**//**//**//**//**////**//**//**//**//**//
+        //--------------------------------------------------------------------------------------------------------//
 
         //Getting Edge and Center positions
         EdgePosSZ = transform.position;
@@ -78,12 +81,25 @@ public class SafeZone : MonoBehaviour
         //Getting distance from Edge position to center position
         RaySZ = Vector3.Distance(EdgePosSZ, CenterPosSZ);
 
-        //**//**//**//**//**////**//**//**//**//**////**//**//**//**//**////**//**//**//**//**//
+        //--------------------------------------------------------------------------------------------------------//
 
         if (!GameObject.FindWithTag("PivotSZ1") && TimeSZ < 0)
         {
             TimeSZ = 4;
         }
+
+        //To show the time on the Screen
+
+        if(TimeSZ > 0)
+        {
+            TexTime.text = "" + TimeSZ;
+        }
+        else
+        {
+            TexTime.text = "--:--";
+        }
+
+        
 
     }
 
@@ -98,8 +114,8 @@ public class SafeZone : MonoBehaviour
         //SAFE ZONE SYSTEM
 
         //Beginning of Safe Zone 1
-
-        if (GameObject.FindWithTag("PivotSZ1"))
+        TimeSZ = 1f * Time.deltaTime;
+        if (GameObject.FindWithTag("PivotSZ1") && TimeSZ <= 0)
 
         {
             //Getting the scaling of objects
@@ -108,34 +124,34 @@ public class SafeZone : MonoBehaviour
 
             SZ1Size = GameObject.FindWithTag("PivotSZ1").transform.localScale;
 
+
+            //Decreasing little according next Safe Zone
             if (ScaleCenterSZ > ScaleSZ1)
             {
-                GameObject.FindWithTag("SafeZoneCenter").transform.localScale += new Vector3(-0.2f * (Time.deltaTime) * SZ1Size.x, -0.2f * (Time.deltaTime) * SZ1Size.y, 0f);
+                GameObject.FindWithTag("SafeZoneCenter").transform.localScale += new Vector3(-0.01f * (Time.deltaTime) * SZ1Size.x, -0.01f * (Time.deltaTime) * SZ1Size.y, 0f);
             }
 
-            //**//**//**//**//**////**//**//**//**//**////**//**//**//**//**////**//**//**//**//**//
+            //--------------------------------------------------------------------------------------------------------//
 
             //Getting the position of the Pivot and Safe zone
 
             PositionCentralSZ1 = GameObject.FindWithTag("SafeZoneCenter").transform.position;
             PositionPivotSZ1 = GameObject.FindWithTag("PivotSZ1").transform.position;
 
-            //Getting the distance from pivot to center of safe zone
+            //Moving to the next safe
             DistancePivotSZ1 = Vector3.Distance(PositionCentralSZ1, PositionPivotSZ1);
 
 
             if (DistancePivotSZ1 > 0)
             {
-                GameObject.FindWithTag("SafeZoneCenter").transform.position = Vector3.Lerp(PositionCentralSZ1, PositionPivotSZ1, 1.0f * Time.deltaTime);
+                GameObject.FindWithTag("SafeZoneCenter").transform.position = Vector3.Lerp(PositionCentralSZ1, PositionPivotSZ1, 0.03f * Time.deltaTime);
             }
 
         }
 
         //Safe zone chain
 
-        TimeSZ -= 0.5f * Time.deltaTime;
-
-        if (TimeSZ < 3)
+        if (TimeSZ < 2.5f)
         {
             if (!GameObject.FindWithTag("PivotSZ1") && ControllSZ == 0)
             {
@@ -184,11 +200,12 @@ public class SafeZone : MonoBehaviour
 
         //End of Safe Zone 1
 
-        //**//**//**//**//**////**//**//**//**//**////**//**//**//**//**////**//**//**//**//**//
+        //--------------------------------------------------------------------------------------------------------//
 
         //Beginning of Safe Zone 2
 
-
+        
+        /*
         if (!GameObject.FindWithTag("PivotSZ1") && GameObject.FindWithTag("PivotSZ2"))
 
         {
@@ -203,7 +220,7 @@ public class SafeZone : MonoBehaviour
                 GameObject.FindWithTag("SafeZoneCenter").transform.localScale += new Vector3(-0.2f * (Time.deltaTime) * SZ2Size.x, -0.2f * (Time.deltaTime) * SZ2Size.y, 0f);
             }
 
-            //**//**//**//**//**////**//**//**//**//**////**//**//**//**//**////**//**//**//**//**//
+            //--------------------------------------------------------------------------------------------------------//
 
             //Getting the position of the Pivot and Safe zone
 
@@ -268,6 +285,9 @@ public class SafeZone : MonoBehaviour
             }
         }
 
+        */
+
         //End of Safe Zone 2
     }
+        
 }
