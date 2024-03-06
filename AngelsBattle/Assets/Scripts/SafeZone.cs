@@ -88,9 +88,12 @@ public class SafeZone : MonoBehaviour
             TimeSZ = 4;
         }
 
+        //Safes time
+        TimeSZ = 0.1f * Time.deltaTime;
+
         //To show the time on the Screen
 
-        if(TimeSZ > 0)
+        if (TimeSZ > 0)
         {
             TexTime.text = "" + TimeSZ;
         }
@@ -99,6 +102,17 @@ public class SafeZone : MonoBehaviour
             TexTime.text = "--:--";
         }
 
+        //To display the actual safe zone
+        if (TimeSZ < 3)
+        {
+            RenderASZ.enabled = true;
+        }
+
+        //To never have values less than zero
+        if(TimeSZ < 0)
+        {
+            TimeSZ = 0;
+        }
         
 
     }
@@ -114,7 +128,7 @@ public class SafeZone : MonoBehaviour
         //SAFE ZONE SYSTEM
 
         //Beginning of Safe Zone 1
-        TimeSZ = 1f * Time.deltaTime;
+        
         if (GameObject.FindWithTag("PivotSZ1") && TimeSZ <= 0)
 
         {
@@ -128,7 +142,7 @@ public class SafeZone : MonoBehaviour
             //Decreasing little according next Safe Zone
             if (ScaleCenterSZ > ScaleSZ1)
             {
-                GameObject.FindWithTag("SafeZoneCenter").transform.localScale += new Vector3(-0.01f * (Time.deltaTime) * SZ1Size.x, -0.01f * (Time.deltaTime) * SZ1Size.y, 0f);
+                GameObject.FindWithTag("SafeZoneCenter").transform.localScale += new Vector3(-1f * (Time.deltaTime) * SZ1Size.x, -1f * (Time.deltaTime) * SZ1Size.y, 0f);
             }
 
             //--------------------------------------------------------------------------------------------------------//
@@ -144,18 +158,21 @@ public class SafeZone : MonoBehaviour
 
             if (DistancePivotSZ1 > 0)
             {
-                GameObject.FindWithTag("SafeZoneCenter").transform.position = Vector3.Lerp(PositionCentralSZ1, PositionPivotSZ1, 0.03f * Time.deltaTime);
+                GameObject.FindWithTag("SafeZoneCenter").transform.position = Vector3.Lerp(PositionCentralSZ1, PositionPivotSZ1, 0.1f * Time.deltaTime);
             }
-
+            //To authorize next safe
+            if(DistancePivotSZ1 <= 0 && ScaleCenterSZ <= ScaleSZ1)
+            {
+                Destroy(GameObject.FindWithTag("PivotSZ1"));
+            }
         }
 
-        //Safe zone chain
+        //Scheme to spawn safezone1
 
         if (TimeSZ < 2.5f)
         {
             if (!GameObject.FindWithTag("PivotSZ1") && ControllSZ == 0)
             {
-                RenderASZ.enabled = true;
 
                 //Spawn possibilities
                 RandomSpawn = Random.value;
