@@ -95,12 +95,12 @@ public class SafeZone : MonoBehaviour
 
         if (TimeSZ > 0)
         {
-            TexTime.text = "" + TimeSZ;
+            TexTime.text = "" + TimeSZ.ToString("00:00");
         }
         else
         {
             TexTime.text = "--:--";
-        }
+        } 
 
         //To display the actual safe zone
         if (TimeSZ < 3)
