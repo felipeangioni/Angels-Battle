@@ -2496,7 +2496,7 @@ PrefabInstance:
     - target: {fileID: 4260881414929783063, guid: 60be0b90c26a1b4478650e051c3525e4,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -144
+      value: -150
       objectReference: {fileID: 0}
     - target: {fileID: 4260881414929783063, guid: 60be0b90c26a1b4478650e051c3525e4,
         type: 3}
@@ -2560,6 +2560,11 @@ PrefabInstance:
       propertyPath: RenderASZ
       value: 
       objectReference: {fileID: 147858815}
+    - target: {fileID: 5325044202419448667, guid: 60be0b90c26a1b4478650e051c3525e4,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5973645630379739790, guid: 60be0b90c26a1b4478650e051c3525e4,
         type: 3}
       propertyPath: m_Name
