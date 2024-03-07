@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DragonAirDrop : MonoBehaviour
 {
-    public float PlaneTime;
+    public float DragonTime;
     private int airDropCount;
 
     public GameObject AirDrop;
@@ -18,16 +18,16 @@ public class DragonAirDrop : MonoBehaviour
     {
         transform.Translate(Vector3.forward * 20 * Time.deltaTime);
 
-        PlaneTime += Time.deltaTime;
+        DragonTime += Time.deltaTime;
 
-        if(PlaneTime > 20f && airDropCount == 0)
+        if(DragonTime > 20f && airDropCount == 0)
         {
             Instantiate(AirDrop, transform.position, transform.rotation);
 
             airDropCount = 1;
         }
 
-        if(PlaneTime > 60f )
+        if(DragonTime > 60f )
         {
             Destroy(gameObject);
         }
