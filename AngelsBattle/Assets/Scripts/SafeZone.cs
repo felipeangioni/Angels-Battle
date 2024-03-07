@@ -89,9 +89,9 @@ public class SafeZone : MonoBehaviour
         }
 
         //Safes time
-        TimeSZ = 0.1f * Time.deltaTime;
+        TimeSZ -= 0.1f * Time.deltaTime;
 
-        //To show the time on the Screen
+        //To show the time on the Screen    
 
         if (TimeSZ > 0)
         {
