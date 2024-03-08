@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -36,11 +37,18 @@ public class SafeZone : MonoBehaviour
 
     public Text TexTime;
 
+    public Image StopWatch;
+    public Sprite RunningTime;
+    public Sprite TimeIsOver;
+
+
     void Start()
     {
         TimeSZ = 4;
         ControllSZ = 0;
         RenderASZ.enabled = false;
+        StopWatch.sprite = RunningTime;
+
     }
 
     void Update()
@@ -95,10 +103,12 @@ public class SafeZone : MonoBehaviour
 
         if (TimeSZ > 0)
         {
+            StopWatch.sprite = RunningTime;
             TexTime.text = "" + TimeSZ.ToString("00:00");
         }
         else
         {
+            StopWatch.sprite = TimeIsOver;
             TexTime.text = "--:--";
         } 
 

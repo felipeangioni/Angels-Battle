@@ -322,8 +322,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -84.5, y: 193.1}
-  m_SizeDelta: {x: 30.7167, y: 19.3}
+  m_AnchoredPosition: {x: -76.80054, y: 191.2067}
+  m_SizeDelta: {x: 39.0473, y: 20.5622}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &59805978
 MonoBehaviour:
@@ -2560,6 +2560,23 @@ PrefabInstance:
       propertyPath: RenderASZ
       value: 
       objectReference: {fileID: 147858815}
+    - target: {fileID: 4371597136669277948, guid: 60be0b90c26a1b4478650e051c3525e4,
+        type: 3}
+      propertyPath: StopWatch
+      value: 
+      objectReference: {fileID: 958837682}
+    - target: {fileID: 4371597136669277948, guid: 60be0b90c26a1b4478650e051c3525e4,
+        type: 3}
+      propertyPath: TimeIsOver
+      value: 
+      objectReference: {fileID: 21300000, guid: 5ac6433b3be84bd46baa0f79c18087f1,
+        type: 3}
+    - target: {fileID: 4371597136669277948, guid: 60be0b90c26a1b4478650e051c3525e4,
+        type: 3}
+      propertyPath: RunningTime
+      value: 
+      objectReference: {fileID: 21300000, guid: 556688caf00bdd344831ae4358010070,
+        type: 3}
     - target: {fileID: 5325044202419448667, guid: 60be0b90c26a1b4478650e051c3525e4,
         type: 3}
       propertyPath: m_Enabled
