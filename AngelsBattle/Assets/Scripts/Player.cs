@@ -16,11 +16,6 @@ public class Player : MonoBehaviour
         PlayerRelativeCenterDistanceSZ = 0f;
     }
 
-    void Update()
-    {
-        
-    }
-
     private void LateUpdate()
     {
         //Getting positions
