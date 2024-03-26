@@ -20,6 +20,7 @@ TagManager:
   - SafeZoneCenter
   - PivotSZ1
   - PivotSZ2
+  - PivotPlayer
   layers:
   - Default
   - TransparentFX
