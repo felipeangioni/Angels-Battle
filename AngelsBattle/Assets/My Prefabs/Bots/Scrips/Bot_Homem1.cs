@@ -28,7 +28,6 @@ public class Bot_Homem1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
 
         //Getting the distance from Enemy
         enemyDistance = Vector3.Distance(transform.position, GameObject.FindWithTag("PivotPlayer").transform.position);
@@ -42,6 +41,7 @@ public class Bot_Homem1 : MonoBehaviour
         else
         {
             follow = false;
+            _agent.velocity = new Vector3(0,0,0);
         }
 
         //Shot the enemy
@@ -61,6 +61,10 @@ public class Bot_Homem1 : MonoBehaviour
         {
             shoot = false;
         }
+
+        //Center of actions
+        //To shot
+        //To follow
 
         _animator.SetBool("follow", follow);
         _animator.SetBool("shoot", shoot);
