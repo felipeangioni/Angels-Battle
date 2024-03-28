@@ -18,6 +18,9 @@ public class Bot_Homem1 : MonoBehaviour
 
     void Start()
     {
+        _animator = GetComponent<Animator>();
+        _agent = GetComponent<NavMeshAgent>();
+
         shoot = true;
         follow = false;
     }
@@ -25,8 +28,7 @@ public class Bot_Homem1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _animator.SetBool("follow", follow);
-        _animator.SetBool("shoot", shoot);
+        
 
         //Getting the distance from Enemy
         enemyDistance = Vector3.Distance(transform.position, GameObject.FindWithTag("PivotPlayer").transform.position);
@@ -35,6 +37,7 @@ public class Bot_Homem1 : MonoBehaviour
         if (enemyDistance > 10 && enemyDistance < 20)
         {
             follow = true;
+            _agent.destination = GameObject.FindWithTag("PivotPlayer").transform.position;
         }
         else
         {
@@ -46,10 +49,20 @@ public class Bot_Homem1 : MonoBehaviour
         {
             shoot = true;
             Instantiate(Bullet, SpawnWeapon.transform.position, SpawnWeapon.transform.rotation);
+
+            //To get our position relative to the player
+            Vector3 relativePos = transform.position - GameObject.FindWithTag("PivotPlayer").transform.position;
+
+            //Rotate to enemy
+            Quaternion rotation = Quaternion.LookRotation(-relativePos, Vector3.up);
+            transform.rotation = rotation;
         }
         else
         {
             shoot = false;
         }
+
+        _animator.SetBool("follow", follow);
+        _animator.SetBool("shoot", shoot);
     }
 }

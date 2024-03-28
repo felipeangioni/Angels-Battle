@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    private float bulletVelocity;
+    private float bulletVelocity = 2000.0f;
 
     void Start()
     {
-          gameObject.GetComponent<Rigidbody>().velocity = transform.forward * bulletVelocity;
+          gameObject.GetComponent<Rigidbody>().velocity = transform.forward * (bulletVelocity) * Time.deltaTime;
     }
 
 
