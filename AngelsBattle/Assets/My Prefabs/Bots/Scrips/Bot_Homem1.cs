@@ -35,11 +35,13 @@ public class Bot_Homem1 : MonoBehaviour
         //Follow the enemy
         if (enemyDistance > 10 && enemyDistance < 20)
         {
+            _agent.enabled = true;
             follow = true;
             _agent.destination = GameObject.FindWithTag("PivotPlayer").transform.position;
         }
         else
         {
+            _agent.enabled = false;
             follow = false;
             _agent.velocity = new Vector3(0,0,0);
         }
@@ -47,6 +49,7 @@ public class Bot_Homem1 : MonoBehaviour
         //Shot the enemy
         if (enemyDistance < 10 )
         {
+            _agent.enabled = false;
             shoot = true;
             Instantiate(Bullet, SpawnWeapon.transform.position, SpawnWeapon.transform.rotation);
 
