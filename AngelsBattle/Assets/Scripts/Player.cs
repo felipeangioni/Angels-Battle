@@ -67,4 +67,13 @@ public class Player : MonoBehaviour
         GUI.TextField(new Rect(10f, 30f, 130f, 20f), "Player distance:" + PlayerRelativeCenterDistanceSZ);
         GUI.TextField(new Rect(200f, 700f, 130f, 20f), "Life:" + Life);
     }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        //Lose life when get fired
+        if(collision.gameObject.tag == "Bullet")
+        {
+            Life -= 5 * Time.deltaTime;
+        }
+    }
 }
